@@ -5,9 +5,13 @@ let numbers = [];
  * @param {*} elem Рандомное число
  */
 let makeNum = (elem) => {
-    for(let i = 0; i < elem; i++) {
-        numbers.push(randomNum())
-        checkHandler(i, numbers)
+    if (elem > 0) {
+        for(let i = 0; i < elem; i++) {
+            numbers.push(randomNum())
+            checkHandler(i, numbers)
+        }
+    } else {
+        console.log(colors.red("Пустой массив"));
     }
 };
 makeNum(randomNum());
@@ -30,7 +34,7 @@ function checkHandler (elem, numbers) {
             break;
         case `numbers[${2}]`:
             console.log(colors.red(numbers[2]));
-            break;
+            break;         
 
         default:
             console.log(colors.blue(numbers[elem]));
