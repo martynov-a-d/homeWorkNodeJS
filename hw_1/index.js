@@ -1,5 +1,4 @@
 let colors = require("colors/safe");
-const randomNum = Math.floor(Math.random() * 10);
 let numbers = [];
 /**
  * 
@@ -7,13 +6,14 @@ let numbers = [];
  */
 let makeNum = (elem) => {
     for(let i = 0; i < elem; i++) {
-        let randomNum = Math.floor(Math.random() * 10)
-        numbers.push(randomNum)
+        numbers.push(randomNum())
         checkHandler(i, numbers)
     }
 };
-
-makeNum(randomNum);
+makeNum(randomNum());
+function randomNum () {
+    return Math.floor(Math.random() * 10);
+};
 /**
  * 
  * @param {*} elem Элемент массива чисел
