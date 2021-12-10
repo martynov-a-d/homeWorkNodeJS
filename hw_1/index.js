@@ -1,6 +1,10 @@
 let colors = require("colors/safe");
-const elem = Math.floor(Math.random() * 10);
+const randomNum = Math.floor(Math.random() * 10);
 let numbers = [];
+/**
+ * 
+ * @param {*} elem Рандомное число
+ */
 let makeNum = (elem) => {
     for(let i = 0; i < elem; i++) {
         let randomNum = Math.floor(Math.random() * 10)
@@ -9,8 +13,12 @@ let makeNum = (elem) => {
     }
 };
 
-makeNum(elem);
-
+makeNum(randomNum);
+/**
+ * 
+ * @param {*} elem Элемент массива чисел
+ * @param {*} numbers Массив чисел
+ */
 function checkHandler (elem, numbers) {
     let key = `numbers[${elem}]`;
     switch (key) {
