@@ -1,44 +1,56 @@
-//---- Мне кажется, я не понял что именно нужно сделать, пойму, переделаю ----//
-let colors = require("colors/safe");
-let numbers = [];
-/**
- * 
- * @param {*} elem Рандомное число
- */
-let makeNum = (elem) => {
-    if (elem > 0) {
-        for(let i = 0; i < elem; i++) {
-            numbers.push(randomNum())
-            checkHandler(i, numbers)
-        }
-    } else {
-        console.log(colors.red("Пустой массив"));
-    }
-};
-makeNum(randomNum());
-function randomNum () {
-    return Math.floor(Math.random() * 10);
-};
-/**
- * 
- * @param {*} elem Элемент массива чисел
- * @param {*} numbers Массив чисел
- */
-function checkHandler (elem, numbers) {
-    let key = `numbers[${elem}]`;
-    switch (key) {
-        case `numbers[${0}]`:
-            console.log(colors.green(numbers[0]));
-            break;
-        case `numbers[${1}]`:
-            console.log(colors.yellow(numbers[1]));
-            break;
-        case `numbers[${2}]`:
-            console.log(colors.red(numbers[2]));
-            break;         
 
-        default:
-            console.log(colors.blue(numbers[elem]));
-            break;
+const args = process.argv.slice(2);
+const min = +args[0];
+const max = +args[1];
+let colors = require("colors/safe");
+/**
+ * 
+ * @param {*} num Число для проверки на простоеЧисло
+ */
+function simpleNum(num) {
+    for(let i = 2; i < num; i++) {
+        if(num % i === 0) {
+            return false
+        }
     }
+    return num > 1
+};
+/**
+ * 
+ * @param {*} min Минимальное число
+ * @param {*} max Максимальное число
+ * @returns Массив простыхЧисел
+ */
+function forceNum(min, max) {
+    let arraySympleNum = []
+    for(let i = min; i <= max; i++) {
+        if(simpleNum(i)) {
+            arraySympleNum.push(i)
+        }
+    }
+    return arraySympleNum
+}
+checkHandler(forceNum(min, max));
+/**
+ * 
+ * @param {*} elem Массив простыхЧисел
+ */
+function checkHandler (elem) {
+    elem.forEach((item, key) => {
+        switch (key) {
+            case 0:
+                console.log(colors.green(item));
+                break;
+            case 1:
+                console.log(colors.yellow(item));
+                break;
+            case 2:
+                console.log(colors.red(item));
+                break;         
+    
+            default:
+                console.log(colors.blue(item));
+                break;
+        }
+    })
 };
