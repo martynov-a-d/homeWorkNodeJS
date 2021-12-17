@@ -3,6 +3,12 @@ const args = process.argv.slice(2);
 const min = +args[0];
 const max = +args[1];
 let colors = require("colors/safe");
+if(min != min || max != max) {
+    return false
+} else {
+    console.log(min, max);
+    checkHandler(forceNum(min, max));
+}
 /**
  * 
  * @param {*} num Число для проверки на простоеЧисло
@@ -30,7 +36,7 @@ function forceNum(min, max) {
     }
     return arraySympleNum
 }
-checkHandler(forceNum(min, max));
+
 /**
  * 
  * @param {*} elem Массив простыхЧисел
@@ -56,6 +62,6 @@ function checkHandler (elem) {
             }
         })
     } else {
-        console.warn(colors.red("FAIL"));
+        console.warn(colors.red("ERROR"));
     }
 };
