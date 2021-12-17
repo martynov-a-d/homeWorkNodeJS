@@ -1,13 +1,13 @@
-
-const args = process.argv.slice(2);
-const min = +args[0];
-const max = +args[1];
-let colors = require("colors/safe");
+//---- Оъявление переменных ----//
+const args = process.argv.slice(2)
+const min = +args[0]
+const max = +args[1]
+let colors = require("colors/safe")
+//---- Блок логики ----//
 if(min != min || max != max) {
     return false
 } else {
-    console.log(min, max);
-    checkHandler(forceNum(min, max));
+    checkHandler(forceNum(min, max))
 }
 /**
  * 
@@ -20,7 +20,7 @@ function simpleNum(num) {
         }
     }
     return num > 1
-};
+}
 /**
  * 
  * @param {*} min Минимальное число
@@ -36,7 +36,6 @@ function forceNum(min, max) {
     }
     return arraySympleNum
 }
-
 /**
  * 
  * @param {*} elem Массив простыхЧисел
@@ -45,23 +44,24 @@ function checkHandler (elem) {
     //---- Проверка на наличие в массиве елементов ----//
     if(elem.length > 0) {
         elem.forEach((item, key) => {
+            //---- Вывод исходя из ключа ----//
             switch (key) {
                 case 0:
-                    console.log(colors.green(item));
-                    break;
+                    console.log(colors.green(item))
+                    break
                 case 1:
-                    console.log(colors.yellow(item));
-                    break;
+                    console.log(colors.yellow(item))
+                    break
                 case 2:
-                    console.log(colors.red(item));
-                    break;         
+                    console.log(colors.red(item))
+                    break       
         
                 default:
-                    console.log(colors.blue(item));
-                    break;
+                    console.log(colors.blue(item))
+                    break
             }
         })
     } else {
-        console.warn(colors.red("ERROR"));
+        console.warn(colors.red("ERROR"))
     }
-};
+}
