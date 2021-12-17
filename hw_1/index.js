@@ -36,21 +36,26 @@ checkHandler(forceNum(min, max));
  * @param {*} elem Массив простыхЧисел
  */
 function checkHandler (elem) {
-    elem.forEach((item, key) => {
-        switch (key) {
-            case 0:
-                console.log(colors.green(item));
-                break;
-            case 1:
-                console.log(colors.yellow(item));
-                break;
-            case 2:
-                console.log(colors.red(item));
-                break;         
-    
-            default:
-                console.log(colors.blue(item));
-                break;
-        }
-    })
+    //---- Проверка на наличие в массиве елементов ----//
+    if(elem.length > 0) {
+        elem.forEach((item, key) => {
+            switch (key) {
+                case 0:
+                    console.log(colors.green(item));
+                    break;
+                case 1:
+                    console.log(colors.yellow(item));
+                    break;
+                case 2:
+                    console.log(colors.red(item));
+                    break;         
+        
+                default:
+                    console.log(colors.blue(item));
+                    break;
+            }
+        })
+    } else {
+        console.warn(colors.red("FAIL"));
+    }
 };
